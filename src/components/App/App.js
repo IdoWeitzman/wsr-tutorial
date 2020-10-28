@@ -49,6 +49,7 @@ class WsrForm extends React.Component {
       </Box>
       <Box>
         <Button
+          dataHook="form-submit"
           onClick={() =>
             this.setState({
               submittedData: {
@@ -68,7 +69,7 @@ class WsrForm extends React.Component {
 
   render() {
     return (
-      <Page height="100vh">
+      <Page height="100vh" dataHook="form-root">
         {this.renderHeader()}
         <Page.Content>
           <Container>
@@ -85,6 +86,7 @@ class WsrForm extends React.Component {
                       <Col span={6}>
                         <FormField label="Name" required>
                           <Input
+                            dataHook="name-input"
                             size="medium"
                             placeholder="Enter a name"
                             onChange={(e) =>
@@ -99,6 +101,7 @@ class WsrForm extends React.Component {
                       <Col span={6}>
                         <FormField label="Favorite Color">
                           <Dropdown
+                            dataHook="form-color"
                             size="medium"
                             placeholder="Enter a color"
                             options={[
@@ -119,6 +122,7 @@ class WsrForm extends React.Component {
                     <Row>
                       <Col span={8}>
                         <Checkbox
+                          dataHook="form-tou"
                           size="small"
                           onChange={(e) =>
                             this.setState({ isAcceptingToU: e.target.checked })
@@ -141,6 +145,7 @@ class WsrForm extends React.Component {
                     <Card.Content>
                       <FormField label="Fun Fact">
                         <InputArea
+                          dataHook="form-funfact"
                           value={this.state.funFact}
                           onChange={(e) =>
                             this.setState({ funFact: e.target.value })
@@ -156,7 +161,10 @@ class WsrForm extends React.Component {
                 {this.state.submittedData && (
                   <Row>
                     <Card stretchVertically>
-                      <Card.Header title="Submitted Info" />
+                      <Card.Header
+                        dataHook="form-submitted-info-header"
+                        title="Submitted Info"
+                      />
                       <Card.Divider />
                       <Card.Content>
                         <Row>
